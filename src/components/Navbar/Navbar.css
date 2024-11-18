@@ -24,19 +24,19 @@
 }
 
 .navbar button {
-  background: transparent;
+  background: var(--primaryColor);
   font-size: 16px;
-  color: #49557e;
-  border: 1px solid tomato;
+  color: white;
+  border: 1px solid var(--primaryColor);
   padding: 10px 30px;
   border-radius: 50px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.navbar button:hover {
+/* .navbar button:hover {
   background-color: #fff4f2;
-}
+} */
 
 .navbar .active {
   padding-bottom: 2px;

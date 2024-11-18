@@ -37,8 +37,8 @@ const Footer = () => {
       </div>
       <hr />
       <p className="footer-copyright">
-        Copyright {new Date().getFullYear()} © Fragolina.com - All Rights
-        Reserved.
+        Copyright {new Date().getFullYear()} © Fragolina.com - Todos los
+        derechos reservados.
       </p>
     </div>
   );
