@@ -1,10 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary: #8bc34a;
+  --secondary: #558b2f;
+  --background-light: #e8f5e9;
+  --neutral-light: #f9fbe7;
+  --accent-yellow: #ffeb3b;
+  --text-dark: #33691e;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -32,7 +41,7 @@ a {
   }
 }
 
-@media (max-width:1050px) {
+@media (max-width: 1050px) {
   .app {
     width: 90%;
   }
