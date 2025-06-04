@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./FoodItem.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../Context/StoreContext";
+import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
 
 const FoodItem = ({ image, name, price, desc, id }) => {
   const [itemCount, setItemCount] = useState(0);
@@ -25,16 +26,18 @@ const FoodItem = ({ image, name, price, desc, id }) => {
           />
         ) : (
           <div className="food-item-counter">
-            <img
-              src={assets.remove_icon_red}
+            <FaMinusCircle
+              size={20}
+              color="#f44336"
+              style={{ cursor: "pointer" }}
               onClick={() => removeFromCart(id)}
-              alt=""
             />
             <p>{cartItems[id]}</p>
-            <img
-              src={assets.add_icon_green}
+            <FaPlusCircle
+              size={20}
+              color="#8bc34a"
+              style={{ cursor: "pointer" }}
               onClick={() => addToCart(id)}
-              alt=""
             />
           </div>
         )}
