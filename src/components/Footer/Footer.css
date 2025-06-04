@@ -52,12 +52,6 @@
   flex-wrap: wrap;
 }
 
-.footer-social-icons img {
-  width: 40px;
-  max-width: 100%;
-  height: auto;
-}
-
 .footer li {
   cursor: pointer;
 }

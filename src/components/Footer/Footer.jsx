@@ -1,6 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { assets } from "../../assets/assets";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -15,9 +16,27 @@ const Footer = () => {
             and scrambled it to make a type specimen book.
           </p>
           <div className="footer-social-icons">
-            <img src={assets.facebook_icon} alt="" />
-            <img src={assets.twitter_icon} alt="" />
-            <img src={assets.linkedin_icon} alt="" />
+            <a
+              href="https://www.facebook.com/tu-perfil"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaFacebookF size={25} />
+            </a>
+            <a
+              href="https://www.instagram.com/tu-perfil"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram size={25} />
+            </a>
+            <a
+              href="https://wa.me/1234567890"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaWhatsapp size={25} />
+            </a>
           </div>
         </div>
         <div className="footer-content-center">
