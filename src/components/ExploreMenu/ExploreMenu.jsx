@@ -5,8 +5,11 @@ const ExploreMenu = ({ category, setCategory }) => {
   const { menu_list } = useContext(StoreContext);
 
   return (
-    <div className="flex flex-col gap-5 py-20 px-4 md:px-10" id="explore-menu">
-      <div className="max-w-3xl mb-4">
+    <div
+      className="flex flex-col gap-5 py-20 px-4 md:px-10 items-center"
+      id="explore-menu"
+    >
+      <div className="max-w-3xl mb-4 mx-auto text-center">
         <h1 className="text-5xl font-extrabold tracking-tight text-zinc-800 mb-4">
           Explore our menu
         </h1>
@@ -17,7 +20,7 @@ const ExploreMenu = ({ category, setCategory }) => {
         </p>
       </div>
 
-      <div className="flex overflow-x-auto gap-8 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+      <div className="flex overflow-x-auto gap-8 pb-4 justify-center w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         {menu_list.map((item, index) => (
           <div
             onClick={() =>
@@ -56,7 +59,7 @@ const ExploreMenu = ({ category, setCategory }) => {
         ))}
       </div>
 
-      <hr className="mt-2 border-none h-[2px] bg-zinc-200" />
+      <hr className="mt-2 border-none h-[2px] bg-zinc-200 w-full" />
     </div>
   );
 };

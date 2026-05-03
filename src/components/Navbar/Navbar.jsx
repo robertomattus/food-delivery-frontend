@@ -15,22 +15,25 @@ const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken, cartItems } =
+    useContext(StoreContext);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // ── Si no estamos en "/" siempre mostramos el fondo oscuro ──
   const isHome = location.pathname === "/";
   const hasDarkBg = !isHome || scrolled;
 
-  // ── Scroll effect ──
+  // Cuenta el total de items en el carrito
+  const getTotalCartItems = () => {
+    return Object.values(cartItems).reduce((total, qty) => total + qty, 0);
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // ── Close mobile menu on desktop resize ──
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 768) setMobileOpen(false);
@@ -39,7 +42,6 @@ const Navbar = ({ setShowLogin }) => {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // ── Lock body scroll when drawer is open ──
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -75,7 +77,6 @@ const Navbar = ({ setShowLogin }) => {
 
   return (
     <>
-      {/* ═══════════════════ HEADER ═══════════════════ */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           hasDarkBg
@@ -83,9 +84,8 @@ const Navbar = ({ setShowLogin }) => {
             : "bg-transparent"
         }`}
       >
-        {/* ── Main Bar ── */}
         <nav className="w-full flex justify-between items-center px-4 md:px-10 h-14 md:h-16">
-          {/* ── Logo ── */}
+          {/* Logo */}
           <Link
             to="/"
             onClick={handleLogoClick}
@@ -94,7 +94,7 @@ const Navbar = ({ setShowLogin }) => {
             <img src={assets.logo} alt="logo" className="h-7 w-auto" />
           </Link>
 
-          {/* ── Desktop Nav Links ── */}
+          {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center space-x-7">
             {navLinks.map((item) =>
               item.isLink ? (
@@ -118,17 +118,16 @@ const Navbar = ({ setShowLogin }) => {
               ),
             )}
 
-            {/* ── Divider + Cart + Auth ── */}
             <div className="flex items-center gap-5 ml-2 border-l border-white/20 pl-7">
-              {/* Cart */}
+              {/* Cart Desktop */}
               <Link
                 to="/cart"
                 className="relative text-white hover:scale-110 transition-transform active:scale-95"
               >
                 <FiShoppingCart size={18} className="text-white" />
-                {getTotalCartAmount() > 0 && (
+                {getTotalCartItems() > 0 && (
                   <span className="absolute -top-2 -right-2 bg-[#FF5A36] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                    2
+                    {getTotalCartItems()}
                   </span>
                 )}
               </Link>
@@ -186,7 +185,7 @@ const Navbar = ({ setShowLogin }) => {
             </div>
           </div>
 
-          {/* ── Mobile: Cart + Hamburger ── */}
+          {/* Mobile: Cart + Hamburger */}
           <div className="flex md:hidden items-center gap-4">
             <Link
               to="/cart"
@@ -194,9 +193,9 @@ const Navbar = ({ setShowLogin }) => {
               className="relative text-white"
             >
               <FiShoppingCart size={22} className="text-white" />
-              {getTotalCartAmount() > 0 && (
+              {getTotalCartItems() > 0 && (
                 <span className="absolute -top-2 -right-2 bg-[#FF5A36] text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  2
+                  {getTotalCartItems()}
                 </span>
               )}
             </Link>
@@ -212,7 +211,7 @@ const Navbar = ({ setShowLogin }) => {
         </nav>
       </header>
 
-      {/* ═══════════════════ MOBILE OVERLAY ═══════════════════ */}
+      {/* Mobile Overlay */}
       <div
         className={`fixed inset-0 z-[55] bg-black/50 transition-opacity duration-300 md:hidden ${
           mobileOpen
@@ -222,14 +221,13 @@ const Navbar = ({ setShowLogin }) => {
         onClick={() => setMobileOpen(false)}
       />
 
-      {/* ═══════════════════ MOBILE DRAWER ═══════════════════ */}
+      {/* Mobile Drawer */}
       <div
         className={`fixed top-0 right-0 h-full w-72 bg-white z-[60] shadow-2xl
           flex flex-col transform transition-transform duration-300 ease-in-out md:hidden ${
             mobileOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
-        {/* Drawer Header */}
         <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
           <img src={assets.logo} alt="logo" className="h-7 w-auto" />
           <button
@@ -241,7 +239,6 @@ const Navbar = ({ setShowLogin }) => {
           </button>
         </div>
 
-        {/* Nav Links */}
         <div className="flex flex-col px-6 pt-2 flex-1 overflow-y-auto">
           {navLinks.map((item) => {
             const mobileLink =
@@ -268,7 +265,6 @@ const Navbar = ({ setShowLogin }) => {
             );
           })}
 
-          {/* Auth Section */}
           <div className="mt-6 flex flex-col gap-3">
             {!token ? (
               <button
