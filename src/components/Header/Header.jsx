@@ -25,7 +25,7 @@ const Header = () => {
 
         {/* Headline */}
         <h1 className="text-white font-['Plus_Jakarta_Sans'] font-extrabold text-5xl md:text-6xl lg:text-7xl leading-[1.1] mb-8 tracking-tight">
-          Order your <span className="text-[#FF5A36]">favourite</span> food here
+          Order your <span className="text-[#FF5A36]">favorite</span> food here
         </h1>
 
         {/* Subtitle */}
