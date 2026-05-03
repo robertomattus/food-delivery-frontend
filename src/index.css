@@ -1,16 +1,6 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&display=swap");
-
-:root {
-  --primary: #ff5a36;
-  --secondary: #1a1a1a;
-  --background-light: #fbf9f9;
-  --neutral-light: #f7f7f7;
-  --accent-yellow: #ffeb3b;
-  --text-dark: #1b1c1c;
-}
-
 * {
   font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
