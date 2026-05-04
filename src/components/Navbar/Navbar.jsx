@@ -25,7 +25,7 @@ const Navbar = ({ setShowLogin }) => {
 
   // Cuenta el total de items en el carrito
   const getTotalCartItems = () => {
-    return Object.values(cartItems).reduce((total, qty) => total + qty, 0);
+    return Object.values(cartItems || {}).reduce((total, qty) => total + qty, 0);
   };
 
   useEffect(() => {
