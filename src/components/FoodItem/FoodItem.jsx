@@ -13,7 +13,7 @@ const FoodItem = ({ image, name, price, desc, id }) => {
       <div className="aspect-[4/3] overflow-hidden">
         <img
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-          src={url + "/images/" + image}
+          src={image}
           alt={name}
         />
       </div>

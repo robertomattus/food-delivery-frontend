@@ -4,7 +4,7 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-  const url = "https://food-delivery-api-sry9.onrender.com";
+  const url = import.meta.env.VITE_BACKEND_URL;
   const [food_list, setFoodList] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
@@ -21,7 +21,7 @@ const StoreContextProvider = (props) => {
       await axios.post(
         url + "/api/cart/add",
         { itemId },
-        { headers: { token } }
+        { headers: { token } },
       );
     }
   };
@@ -32,7 +32,7 @@ const StoreContextProvider = (props) => {
       await axios.post(
         url + "/api/cart/remove",
         { itemId },
-        { headers: { token } }
+        { headers: { token } },
       );
     }
   };
@@ -59,7 +59,7 @@ const StoreContextProvider = (props) => {
     const response = await axios.post(
       url + "/api/cart/get",
       {},
-      { headers: token }
+      { headers: token },
     );
     setCartItems(response.data.cartData);
   };
